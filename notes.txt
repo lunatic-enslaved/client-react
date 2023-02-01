@@ -1,0 +1,13 @@
+# что такое web-vitals? зачем он в dependencies?
+
+FIXME: мемоизация
+FIXME: нужен ли ant design?
+FIXME: добавить старицу ошибки
+FIXME: validate and output errors in login form
+FIXME: добавить требование комментов к коду через eslint
+
+Расходы
++ создавать счета
+- удалять счета
+- редактировать счета
+- просматривать расходы за период

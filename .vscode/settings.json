@@ -1,0 +1,23 @@
+{
+  "nuxt.isNuxtApp": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "antd",
+    "camelcase",
+    "flexbugs",
+    "pmmmwh",
+    "svgr",
+    "tailwindcss",
+    "testname",
+    "typeahead",
+    "uuidv"
+  ]
+}
