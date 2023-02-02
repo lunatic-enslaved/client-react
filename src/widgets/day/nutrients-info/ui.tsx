@@ -1,5 +1,6 @@
 import { formatNumber } from '@/shared/lib/formatNumber';
-import { Product } from '../types';
+
+import { Product } from './types';
 
 interface NutrientsInfoProps {
   products: Product[];

@@ -4,13 +4,13 @@ import { Dayjs } from 'dayjs';
 import dayjs from '@/shared/lib/dayjs';
 import { Product } from '@/entities/product/list';
 
-import { MealProduct } from './types';
+import { AddedProduct } from './types';
 
 export function useDayProducts({ date }: { date: Date }) {
   const startOfDay = dayjs.utc(date).startOf('day');
   const endOfDay = dayjs.utc(date).endOf('day');
 
-  const result = useQuery<{ addedProducts: MealProduct[] }>(
+  const result = useQuery<{ addedProducts: AddedProduct[] }>(
     gql`
       query GET_DAY_PRODUCTS($startOfDay: DateTime!, $endOfDay: DateTime!) {
         addedProducts(where: { time: { gte: $startOfDay, lte: $endOfDay } }) {
@@ -53,10 +53,10 @@ export function useAddProduct({
   onCompleted,
   onError
 }: {
-  onCompleted: (product: MealProduct) => void;
+  onCompleted: (product: AddedProduct) => void;
   onError: (error: ApolloError) => void;
 }) {
-  const [defaultFn, options] = useMutation<{ createOneProduct: MealProduct }, PreparedVariables>(
+  const [defaultFn, options] = useMutation<{ createOneProduct: AddedProduct }, PreparedVariables>(
     gql`
       mutation CREATE_PRODUCT($productId: Int!, $time: DateTime!, $grams: Float!) {
         createOneAddedProduct(

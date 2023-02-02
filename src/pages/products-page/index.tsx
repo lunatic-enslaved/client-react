@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
-import { ProductListWithEditor } from '@/widgets/product-list-with-editor';
+import { EditableProductList } from '@/features/product/editable-list';
 
 const ProductsPage: FC = () => {
   document.title = 'Продукты';
 
   return (
     <div className="p-4 w-full h-full">
-      <ProductListWithEditor />
+      <EditableProductList />
     </div>
   );
 };

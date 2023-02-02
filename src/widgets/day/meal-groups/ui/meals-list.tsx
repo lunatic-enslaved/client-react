@@ -6,10 +6,10 @@ import { formatNumber } from '@/shared/lib/formatNumber';
 import dayjs from '@/shared/lib/dayjs';
 import { calculateTotalWeightOfNutrient } from '@/entities/product/lib';
 
-import { MealProduct } from '../types';
+import { AddedProduct } from '../types';
 
 interface MealsListProps {
-  products: MealProduct[];
+  products: AddedProduct[];
   className?: string;
 }
 
@@ -39,9 +39,9 @@ export const MealsList = (props: MealsListProps) => {
 };
 
 interface ProductListItemProps {
-  mealProduct: MealProduct;
-  onClick: (mealProduct: MealProduct) => void;
-  onDeleteClick: (mealProduct: MealProduct) => void;
+  mealProduct: AddedProduct;
+  onClick: (mealProduct: AddedProduct) => void;
+  onDeleteClick: (mealProduct: AddedProduct) => void;
 }
 
 const ProductListItem = (props: ProductListItemProps) => {

@@ -5,7 +5,8 @@ import { Dayjs } from 'dayjs';
 
 import dayjs from '@/shared/lib/dayjs';
 import { Product } from '@/entities/product/list';
-import { ProductListWithEditor } from '@/widgets/product-list-with-editor';
+import { EditableProductList } from '@/features/product/editable-list';
+
 import { useAddProduct } from '../api';
 
 // FIXME: перенести ProductListWithEditor в entities ?
@@ -58,7 +59,7 @@ export const AddProductToMealDialog = (props: AddProductToMealDialogProps) => {
   let footerButtons: JSX.Element[];
 
   if (step === 1) {
-    content = <ProductListWithEditor onProductClick={onProductClick} />;
+    content = <EditableProductList onProductClick={onProductClick} />;
     footerButtons = [];
   } else {
     const formId = uuidv4();
