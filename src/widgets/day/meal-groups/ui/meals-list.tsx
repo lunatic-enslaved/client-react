@@ -4,7 +4,7 @@ import { Button } from 'antd';
 
 import { formatNumber } from '@/shared/lib/formatNumber';
 import dayjs from '@/shared/lib/dayjs';
-import { calculateTotalWeightOfNutrient } from '@/entities/product/lib';
+import { calculateNutrients } from '@/entities/product/lib';
 
 import { AddedProduct } from '../types';
 
@@ -60,6 +60,8 @@ const ProductListItem = (props: ProductListItemProps) => {
     props.onDeleteClick(props.mealProduct);
   };
 
+  const nutrients = calculateNutrients(props.mealProduct);
+
   return (
     <li
       className="flex flex-nowrap items-center hover:bg-gray-50 px-6 cursor-pointer"
@@ -72,36 +74,9 @@ const ProductListItem = (props: ProductListItemProps) => {
         </p>
 
         <div className="flex flex-nowrap justify-between w-full">
-          <span className="mr-4">
-            Б:
-            {formatNumber(
-              calculateTotalWeightOfNutrient(
-                props.mealProduct.product.proteins,
-                props.mealProduct.grams
-              )
-            )}
-            г
-          </span>
-          <span className="mr-4">
-            У:
-            {formatNumber(
-              calculateTotalWeightOfNutrient(
-                props.mealProduct.product.carbs,
-                props.mealProduct.grams
-              )
-            )}
-            г
-          </span>
-          <span className="mr-4">
-            Ж:
-            {formatNumber(
-              calculateTotalWeightOfNutrient(
-                props.mealProduct.product.fats,
-                props.mealProduct.grams
-              )
-            )}
-            г
-          </span>
+          <span className="mr-4">Б: {formatNumber(nutrients.proteins)}г</span>
+          <span className="mr-4">У: {formatNumber(nutrients.carbs)}г</span>
+          <span className="mr-4">Ж: {formatNumber(nutrients.fats)}г</span>
         </div>
       </div>
 
@@ -110,10 +85,7 @@ const ProductListItem = (props: ProductListItemProps) => {
           <time dateTime={props.mealProduct.time} className="mr-2 text-gray-500">
             {dayjs(props.mealProduct.time).format('LT')}
           </time>
-          <strong>
-            {formatNumber((props.mealProduct.product.calories / 100) * props.mealProduct.grams, 0)}
-            ккал
-          </strong>
+          <strong>{formatNumber(nutrients.calories, 0)} ккал</strong>
         </div>
         <p>{formatNumber(props.mealProduct.grams, 0)} г</p>
       </div>

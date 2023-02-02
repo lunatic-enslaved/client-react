@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, List } from 'antd';
 import cn from 'classnames';
 
-import { Product, useProducts } from './api';
+import { useProducts, Product } from '../api';
 
 // TODO: добавить virtual scroll
 
@@ -40,12 +40,12 @@ export const ProductList = React.forwardRef(
     }));
 
     const listItemClasses = cn(
-      { 'cursor-pointer': props.onProductClick },
+      { 'cursor-pointer': !!props.onProductClick },
       'hover:bg-gray-50 flex flex-nowrap items-center'
     );
 
     return (
-      <div className="w-full h-full">
+      <div className="w-full">
         <Form initialValues={{ remember: true }} autoComplete="off" className="flex flex-nowrap">
           <Form.Item name="search" className="flex-1">
             <Input

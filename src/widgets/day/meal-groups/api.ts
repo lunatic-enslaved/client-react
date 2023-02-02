@@ -2,9 +2,8 @@ import { ApolloError, gql, useMutation, useQuery } from '@apollo/client';
 import { Dayjs } from 'dayjs';
 
 import dayjs from '@/shared/lib/dayjs';
-import { Product } from '@/entities/product/list';
 
-import { AddedProduct } from './types';
+import { AddedProduct, Product } from './types';
 
 export function useDayProducts({ date }: { date: Date }) {
   const startOfDay = dayjs.utc(date).startOf('day');

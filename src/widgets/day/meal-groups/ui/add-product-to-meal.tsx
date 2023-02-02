@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { Dayjs } from 'dayjs';
 
 import dayjs from '@/shared/lib/dayjs';
-import { Product } from '@/entities/product/list';
 import { EditableProductList } from '@/features/product/editable-list';
 
 import { useAddProduct } from '../api';
+import { Product } from '../types';
 
-// FIXME: перенести ProductListWithEditor в entities ?
 // FIXME: добавить onError
 
 interface AddProductToMealDialogProps {

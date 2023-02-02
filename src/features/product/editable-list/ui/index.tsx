@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from 'antd';
 
-import { Product, ProductList, ProductListProps, ProductListRef } from '@/entities/product/list';
 import { CreateProductDialog } from './create-dialog';
+import { ProductList, ProductListProps, ProductListRef } from './product-list';
+import { Product } from '../api';
 
 export const ListWithEditor = (props: ProductListProps) => {
   const [isEditorOpen, setEditorOpen] = React.useState(false);

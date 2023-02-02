@@ -1,6 +1,45 @@
-import { useMutation, gql, ApolloError } from '@apollo/client';
+import { ApolloError, gql, useMutation, useQuery } from '@apollo/client';
 
-import { FormValues, Product } from './types';
+export interface Product {
+  readonly id: number;
+  readonly name: string;
+  readonly proteins: number;
+  readonly carbs: number;
+  readonly fats: number;
+  readonly calories: number;
+}
+
+export function useProducts(props: { name: string | null }) {
+  const name = props.name;
+
+  const result = useQuery<{ PRODUCTS: Product[] }>(
+    gql`
+      query GET_PRODUCTS($where: ProductWhereInput) {
+        PRODUCTS: products(where: $where, orderBy: { name: asc }) {
+          id
+          name
+          proteins
+          calories
+          carbs
+          fats
+        }
+      }
+    `,
+    {
+      variables: name ? { where: { name: { contains: name, mode: 'insensitive' } } } : undefined
+    }
+  );
+
+  return result;
+}
+
+export interface FormValues {
+  name: string;
+  calories: number;
+  carbs: number;
+  proteins: number;
+  fats: number;
+}
 
 export function useCreateProduct({
   onCompleted,

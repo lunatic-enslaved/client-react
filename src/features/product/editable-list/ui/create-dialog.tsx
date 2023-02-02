@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Form, Input, Modal, InputNumber } from 'antd';
 import { ApolloError } from '@apollo/client';
 
-import { useCreateProduct, useUpdateProduct } from './api';
-import { FormValues, Product } from './types';
+import { useCreateProduct, useUpdateProduct, FormValues, Product } from '../api';
 
 interface CreateProductDialogProps {
   isOpen?: boolean;
@@ -13,11 +12,6 @@ interface CreateProductDialogProps {
   onCreated?: () => void;
   onUpdated?: () => void;
 }
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 }
-};
 
 export const CreateProductDialog = (props: CreateProductDialogProps) => {
   const [isLoading, setLoading] = useState(false);
@@ -97,12 +91,12 @@ export const CreateProductDialog = (props: CreateProductDialogProps) => {
     return Promise.resolve();
   };
 
-  // add forceRender to modal to prerender children and set form from useForm hook
   return (
     <>
       {props.activatorSlot && props.activatorSlot({ onClick: () => setOpen(true) })}
 
       <Modal
+        // add forceRender to modal to prerender children and set form from useForm hook
         forceRender
         title={props.product ? 'Редактировать продукт: ' + props.product.name : 'Новый продукт'}
         open={isOpen}
@@ -114,7 +108,8 @@ export const CreateProductDialog = (props: CreateProductDialogProps) => {
           </Button>
         }>
         <Form
-          {...layout}
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
           id="product-editor-form"
           form={form}
           initialValues={initialValues}

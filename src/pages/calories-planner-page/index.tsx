@@ -24,7 +24,7 @@ const CaloriesPlannerPage = () => {
   }
 
   return (
-    <div className="p-4 w-full h-full">
+    <div className="p-4 w-full h-full flex flex-col">
       <DayNutrientsInfo
         carbsPlan={55}
         fatsPlan={55}
@@ -32,7 +32,12 @@ const CaloriesPlannerPage = () => {
         caloriesPlan={1200}
         products={products}
       />
-      <DayMealGroups products={addedProducts} date={date} onProductAdded={() => refetch()} />
+      <DayMealGroups
+        products={addedProducts}
+        date={date}
+        onProductAdded={() => refetch()}
+        className="flex-1"
+      />
     </div>
   );
 };
